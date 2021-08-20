@@ -41,11 +41,11 @@ jobs:
 
   oast-audit:
     runs-on: ubuntu-latest
-    needs: audit
+    needs: test
     steps:
       - name: Clone the Repository
         uses: actions/checkout@v2
-        
+
       - name: run npm audit
         run: npm audit
         continue-on-error: true
