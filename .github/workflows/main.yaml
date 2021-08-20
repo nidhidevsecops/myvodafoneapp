@@ -39,6 +39,17 @@ jobs:
           path: retire-output.json
         if: always()
 
+  oast-audit:
+    runs-on: ubuntu-latest
+    needs: audit
+    steps:
+      - name: Clone the Repository
+        uses: actions/checkout@v2
+        
+      - name: run npm audit
+        run: npm audit
+        continue-on-error: true
+
   oast-safety:
     runs-on: ubuntu-latest
     needs: test
